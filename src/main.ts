@@ -3,6 +3,7 @@ import { Preload } from "./scenes/Preload";
 import { GameScene } from "./scenes/GameScene";
 import { MenuScene } from "./scenes/MenuScene";
 import { ResultsScene } from "./scenes/ResultsScene";
+import { TestScene } from "./scenes/TestScene";
 
 
 class Main extends Phaser.Game {
@@ -16,7 +17,7 @@ class Main extends Phaser.Game {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: true
+            debug: false
         }
       },
       scene:{
@@ -32,6 +33,7 @@ class Main extends Phaser.Game {
     // this.scene.add("boot", Boot, false);
     this.scene.add("menu", MenuScene, false);
     this.scene.add("results", ResultsScene, false);
+    this.scene.add("test", TestScene, false);
     this.scene.add("preload", Preload, false);
     this.scene.add("game", GameScene, false);
     this.scene.start("preload");

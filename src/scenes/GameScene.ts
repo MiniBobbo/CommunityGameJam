@@ -8,6 +8,7 @@ export class GameScene extends Phaser.Scene {
     AllPossibleButlers:Array<Array<number>>
 
     preload() {
+        this.AllButlers = [];
     	this.AllPossibleButlers = [];
     	this.TotalCharacteristics = 4;
     	this.CharacteristicChoices = [4,4,4,4];
@@ -35,7 +36,13 @@ export class GameScene extends Phaser.Scene {
     			butlerStr += this.AllPossibleButlers[i][j].toString();
     		}
     		console.log(butlerStr);
-    	}
+        }
+        
+        for(let i = 0; i < 100; i++) {
+            let b = new Butler(this, [Phaser.Math.Between(0,3),Phaser.Math.Between(0,3),Phaser.Math.Between(0,3),Phaser.Math.Between(0,3)]);
+            this.AllButlers.push(b);
+            b.body.setPosition(Phaser.Math.Between(0,960), Phaser.Math.Between(0,540));
+        }
     }
     create() {
     }

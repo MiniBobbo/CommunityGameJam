@@ -10,6 +10,7 @@ export class Butler {
     characteristics:Array<number>;
 
     constructor(scene:Phaser.Scene, characteristics:Array<number>) {
+        this.characteristics = characteristics;
         this.scene = scene;
         this.body = scene.physics.add.sprite(0,0,'butleratlas', 'butlers_body_0');
         this.body.setCircle(16);
@@ -31,7 +32,5 @@ export class Butler {
             this.face.scaleX = -1;
             else
             this.face.scaleX = 1;
-            
-        });
     }
 }
