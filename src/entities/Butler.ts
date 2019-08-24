@@ -6,13 +6,13 @@ export class Butler {
     scene:Phaser.Scene;
     clue:Clue;
     name:string;
+
     characteristics:Array<number>;
 
-    constructor(scene:Phaser.Scene) {
+    constructor(scene:Phaser.Scene, characteristics:Array<number>) {
         this.scene = scene;
         this.body = scene.physics.add.sprite(0,0,'butleratlas', 'butlers_body_0');
         this.body.setCircle(16);
-        this.characteristics = [1,2,1,3];
         this.face = scene.add.container(0,0);
         this.CreateFace();
     }
