@@ -1,0 +1,16 @@
+{
+
+    "Clues":[ {
+        "Affirmative":true,
+        "Confidence":100,
+        "Feature":1,
+        "Characteristic":1
+    },
+    {}],
+    "Butlers":{
+    "Name":"",
+    "Characteristics":[1,2,3,4],
+    "Murderer":true,
+    "Liar":true
+    }
+    }
