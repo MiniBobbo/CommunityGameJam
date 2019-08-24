@@ -4,9 +4,9 @@ export class Preload extends Phaser.Scene {
 
     }
     create() {
-        this.add.text(100,250, 'Community Game Jam')
+        this.add.text(100,250, 'The Game is a Liar')
         .setFontSize(60)
         .setAlign('center')
         .setWordWrapWidth(600);
-    }
+    } 
 }
