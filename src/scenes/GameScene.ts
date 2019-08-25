@@ -8,14 +8,13 @@ export class GameScene extends Phaser.Scene {
     AllPossibleButlers:Array<Array<number>>
 
     preload() {
-        this.AllButlers = [];
     	this.AllPossibleButlers = [];
     	this.TotalCharacteristics = 4;
     	this.CharacteristicChoices = [4,4,4,4];
     	var curCharacteristic:Array<number> = [0,0,0,0];
     	var maxCharacteristic:Array<number> = [3,3,3,3];
     	while(JSON.stringify(curCharacteristic) !== JSON.stringify(maxCharacteristic)) {
-			this.AllPossibleButlers.push(curCharacteristic);
+			this.AllPossibleButlers.push(curCharacteristic.slice());
 			curCharacteristic[3]++;
 			if(curCharacteristic[3] > maxCharacteristic[3]) {
 				curCharacteristic[3] = 0;
@@ -30,27 +29,23 @@ export class GameScene extends Phaser.Scene {
 				}
 			}
     	}
-    	for(var i = 0; i < this.AllPossibleButlers.length; i++) {
-    		var butlerStr:string = "";
-    		for(var j = 0; j < this.AllPossibleButlers[i].length; j++) {
-    			butlerStr += this.AllPossibleButlers[i][j].toString();
-    		}
-    		console.log(butlerStr);
-        }
-        
-        for(let i = 0; i < 100; i++) {
-            let b = new Butler(this, [Phaser.Math.Between(0,3),Phaser.Math.Between(0,3),Phaser.Math.Between(0,3),Phaser.Math.Between(0,3)]);
-            this.AllButlers.push(b);
-            b.body.setPosition(Phaser.Math.Between(0,960), Phaser.Math.Between(0,540));
-        }
+    	this.AllPossibleButlers.push(curCharacteristic.slice());
     }
+
     create() {
+    	var numButlers:number = 10;
+    	this.AllButlers = [];
+    	for(var i:number = 0; i < numButlers; i++) {
+    		var characteristics:Array<number> = this.createButler();
+    		var butler = new Butler(this, characteristics);
+    		this.AllButlers.push(butler);
+    	}
     }
 
-    update(time:number, dt:number) {
-        this.AllButlers.forEach(b => {
-            b.Update(time, dt);
-        });
+    createButler() {
+    	var butler:number = Math.floor(Math.random() * this.AllPossibleButlers.length);
+    	var characteristics:Array<number> = this.AllPossibleButlers[butler];
+    	this.AllButlers.splice(butler);
+    	return characteristics;
     }
-
 }
