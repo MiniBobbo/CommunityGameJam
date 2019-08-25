@@ -13,7 +13,7 @@ export class Butler {
         this.characteristics = characteristics;
         this.scene = scene;
         this.body = scene.physics.add.sprite(0,0,'butleratlas', 'butlers_body_0');
-        this.body.setCircle(16);
+        this.body.setSize(32,45);
         this.face = scene.add.container(0,0);
         this.CreateFace();
     }
@@ -27,7 +27,7 @@ export class Butler {
     }
 
     Update(time:number, dt:number) {
-        this.face.setPosition(this.body.x + 4, this.body.y - 8);
+        this.face.setPosition(this.body.x, this.body.y);
         if(this.body.flipX)
             this.face.scaleX = -1;
             else
